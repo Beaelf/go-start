@@ -27,6 +27,9 @@ func main() {
 	var root tree.Node
 
 	root = tree.Node{Value: 3}
+	fmt.Println("test root print")
+	root.Print()
+	fmt.Println("-----------")
 	root.Left = &tree.Node{}
 	root.Right = &tree.Node{5, nil, nil}
 	root.Right.Left = new(tree.Node)
