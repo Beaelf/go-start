@@ -6,7 +6,7 @@ import (
 	"net/http/httputil"
 )
 
-func main() {
+func main0() {
 	request, err := http.NewRequest(
 		http.MethodGet,
 		"http://www.imooc.com", nil)
