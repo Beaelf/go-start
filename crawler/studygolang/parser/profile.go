@@ -9,12 +9,19 @@ import (
 const nameReg = `<li>\n.*<label>名字:</label>\n.*<span>(.+)</span>\n.*</li>`
 const emailReg = `<li>\n.*<label>Email:</label>\n.*<span><a href=".*">(.+)</a></span>\n.*</li>`
 
-func ParseProfile(contents []byte) engine.ParseResult {
+func ParseProfile(contents []byte, url string) engine.ParseResult {
 	profile := model.Profile{}
 	profile.Name = extractString(contents, nameReg)
 	profile.Email = extractString(contents, emailReg)
 	return engine.ParseResult{
-		Items: []interface{}{profile},
+		Items: []engine.Item{
+			{
+				Url:     url,
+				Type:    "studygolang",
+				Id:      "", // todo
+				Payload: profile,
+			},
+		},
 	}
 }
 
